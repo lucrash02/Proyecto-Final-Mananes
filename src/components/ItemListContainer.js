@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
-import getProducts from "../services/getProducts";  // Ruta correcta a getProducts.js
+// src/components/ItemListContainer.js
+import React, { useEffect, useState, useContext } from "react";
+import getProducts from "../services/getProducts"; // Correcta importación de getProducts
+import { CartContext } from '../context/CartContext';  // Importa el contexto del carrito
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
+  const { addToCart } = useContext(CartContext);  // Obtén la función para agregar al carrito
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -12,6 +15,11 @@ const ItemListContainer = () => {
     fetchProducts();
   }, []);  // El array vacío asegura que solo se ejecute una vez al montar el componente
 
+  const handleAddToCart = (product) => {
+    addToCart(product);  // Agrega el producto al carrito
+    alert(`${product.name} ha sido agregado al carrito`);  // Mensaje de confirmación
+  };
+
   return (
     <div>
       <h1>Lista de Productos</h1>
@@ -19,11 +27,12 @@ const ItemListContainer = () => {
         <p>Cargando productos...</p>
       ) : (
         <ul>
-          {products.map((product, index) => (
-            <li key={index}>
+          {products.map((product) => (
+            <li key={product.id}>
               <h3>{product.name}</h3>
               <p>{product.description}</p>
               <p>${product.price}</p>
+              <button onClick={() => handleAddToCart(product)}>Agregar al carrito</button>
             </li>
           ))}
         </ul>
@@ -33,3 +42,4 @@ const ItemListContainer = () => {
 };
 
 export default ItemListContainer;
+

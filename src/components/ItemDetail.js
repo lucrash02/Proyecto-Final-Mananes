@@ -1,3 +1,4 @@
+// src/components/ItemDetail.js
 import React from 'react';
 
 const ItemDetail = ({ product }) => {

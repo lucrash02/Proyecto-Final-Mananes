@@ -1,41 +1,63 @@
-// CartContext.js
-import React, { createContext, useState } from 'react';
+// src/context/CartContext.js
+import React, { createContext, useState } from "react";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const addToCart = (item) => {
+  const addToCart = (productToAdd) => {
     setCart((prevCart) => {
-      if (!prevCart.some((product) => product.id === item.id)) {
-        const newCart = [...prevCart, item];
-        console.log("Nuevo carrito después de agregar:", newCart); // Para verificar el carrito actualizado
-        return newCart;
+      const existingProduct = prevCart.find(
+        (product) => product.id === productToAdd.id
+      );
+  
+      if (existingProduct) {
+        return prevCart.map((product) =>
+          product.id === productToAdd.id
+            ? { ...product, quantity: product.quantity + 1 } // Incrementa la cantidad
+            : product
+        );
+      } else {
+        return [...prevCart, { ...productToAdd, quantity: 1 }]; // Establece quantity en 1
       }
-      return prevCart;
     });
   };
+  
 
   const removeFromCart = (id) => {
-    setCart((prevCart) => {
-      const updatedCart = prevCart.filter((item) => item.id !== id);
-      console.log("Carrito después de eliminar:", updatedCart);
-      return updatedCart;
-    });
+    setCart((prevCart) => prevCart.filter((product) => product.id !== id));
   };
 
   const clearCart = () => {
-    console.log("Carrito limpiado");
     setCart([]);
   };
 
+  const getTotal = () => {
+    return cart.reduce(
+      (total, product) => total + product.quantity * product.price,
+      0
+    );
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        getTotal, // Asegúrate de incluir getTotal aquí
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
 };
+
+
+
+
 
 
 

@@ -1,5 +1,6 @@
-import { collection, getDocs } from "firebase/firestore";  // Importa las funciones necesarias de Firestore
-import { db } from "../firebase/firebaseConfig";  // Asegúrate de que la ruta sea correcta
+// src/services/getProducts.js
+import { collection, getDocs } from "firebase/firestore"; // Importa las funciones necesarias de Firestore
+import { db } from "../firebase/firebaseConfig"; // Asegúrate de que la ruta sea correcta
 
 const getProducts = async () => {
   try {
@@ -16,4 +17,7 @@ const getProducts = async () => {
 };
 
 export default getProducts;
+
+
+
 

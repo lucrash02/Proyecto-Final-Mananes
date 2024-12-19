@@ -1,3 +1,4 @@
+// src/components/CartWidget.js
 import React from 'react';
 
 function CartWidget() {

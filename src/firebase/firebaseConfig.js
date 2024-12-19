@@ -1,4 +1,4 @@
-// firebaseConfig.js
+// src/firebase/firebaseConfig.js
 
 // Importa las funciones necesarias de Firebase SDK
 import { initializeApp } from "firebase/app";
@@ -17,6 +17,7 @@ const firebaseConfig = {
 
 // Inicializa Firebase
 const app = initializeApp(firebaseConfig);
+
 
 // Inicializa Firestore
 const db = getFirestore(app);
