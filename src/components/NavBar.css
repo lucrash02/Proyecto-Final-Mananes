@@ -1,0 +1,35 @@
+/* Estilos para el contenedor del navbar */
+.navbar {
+  padding: 20px;
+  background-color: #282c34; /* Fondo oscuro */
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Espacio entre los links */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra llamativa */
+}
+
+/* Estilos para los links */
+.navbar-link {
+  color: #61dafb; /* Azul claro */
+  font-size: 18px; /* Tamaño del texto */
+  font-weight: bold;
+  text-decoration: none; /* Sin subrayado */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+/* Efecto hover */
+.navbar-link:hover {
+  background-color: #61dafb; /* Fondo azul claro */
+  color: #282c34; /* Texto oscuro */
+  transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+}
+
+/* Efecto cuando está seleccionado (opcional) */
+.navbar-link.active {
+  background-color: #21a1f1;
+  color: white;
+  border: 2px solid #fff; /* Borde blanco */
+}
+
