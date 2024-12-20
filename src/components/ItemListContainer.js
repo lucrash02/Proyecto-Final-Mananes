@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import getProducts from "../services/getProducts"; // Correcta importación de getProducts
 import { CartContext } from '../context/CartContext';  // Importa el contexto del carrito
+import './ItemListContainer.css';  // Asegúrate de importar los estilos
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
@@ -21,21 +22,21 @@ const ItemListContainer = () => {
   };
 
   return (
-    <div>
+    <div className="item-list-container">
       <h1>Lista de Productos</h1>
       {products.length === 0 ? (
         <p>Cargando productos...</p>
       ) : (
-        <ul>
+        <div className="product-grid">
           {products.map((product) => (
-            <li key={product.id}>
+            <div key={product.id} className="product-card">
               <h3>{product.name}</h3>
               <p>{product.description}</p>
               <p>${product.price}</p>
               <button onClick={() => handleAddToCart(product)}>Agregar al carrito</button>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

@@ -9,23 +9,28 @@ import { CartProvider } from "./context/CartContext";
 import Cart from "./components/Cart";
 import Products from "./Products"; // Importa el nuevo componente de productos
 import "./firebase/firebaseConfig"; // Configuración de Firebase
+import "./App.css"; // Estilos generales
 
 function App() {
   return (
     <CartProvider>
-      {/* Contexto del carrito */}
       <Router>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<ItemListContainer greeting="Bienvenido a la tienda" />} />
-          <Route path="/category/:id" element={<Category />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/item/:id" element={<ItemDetailContainer />} />
-          <Route path="/products" element={<Products />} /> {/* Nueva ruta para los productos */}
-        </Routes>
+        <div className="app-container">
+          <NavBar />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<ItemListContainer greeting="Bienvenido a la tienda" />} />
+              <Route path="/category/:id" element={<Category />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/item/:id" element={<ItemDetailContainer />} />
+              <Route path="/products" element={<Products />} />
+            </Routes>
+          </main>
+        </div>
       </Router>
     </CartProvider>
   );
 }
 
 export default App;
+

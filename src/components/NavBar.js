@@ -1,7 +1,7 @@
-// src/components/Navbar.js
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './NavBar.css'; // Asegúrate de tener este archivo y que esté en la misma carpeta o ajusta el path
+// src/components/NavBar.js
+import React from "react";
+import { Link } from "react-router-dom";
+import "./NavBar.css";
 
 const NavBar = () => {
   return (
@@ -14,4 +14,5 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
 
